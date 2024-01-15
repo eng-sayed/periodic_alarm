@@ -6,6 +6,7 @@ import 'package:periodic_alarm/services/alarm_storage.dart';
 import 'package:periodic_alarm/src/android_alarm.dart';
 
 const alarmNumber = 8;
+
 class PeriodicAlarm {
   /// Whether it's iOS device.
   static bool get iOS => Platform.isIOS;
@@ -39,10 +40,7 @@ class PeriodicAlarm {
   // }
 
   static Future<void> dispose() async {
-    await Future.wait([
-      AndroidAlarm.audioPlayer.dispose(),
-      ringStream.close()
-    ]);
+    await Future.wait([AndroidAlarm.audioPlayer.dispose(), ringStream.close()]);
   }
 
   static Future<bool> setOneAlarm({required AlarmModel alarmModel}) async {
@@ -84,6 +82,14 @@ class PeriodicAlarm {
     AlarmNotification.instance.cancel(id);
 
     return await AndroidAlarm.stop(id);
+  }
+
+  static Future /* <bool> */ stopAll() async {
+    //await AlarmStorage.unsaveAlarm(id);
+
+    AlarmNotification.instance.cancelAll();
+
+    // return await AndroidAlarm.stop(id);
   }
 
   static Future<bool> cancelAlarm(int alarmId) async {
