@@ -8,7 +8,6 @@ const notificationOnAppKill = 'notificationOnAppKill';
 const notificationOnAppKillTitle = 'notificationOnAppKillTitle';
 const notificationOnAppKillBody = 'notificationOnAppKillBody';
 
-
 class AlarmStorage {
   static late SharedPreferences prefs;
 
@@ -62,6 +61,10 @@ class AlarmStorage {
       }
     }
     return alarms;
+  }
+
+  static Future removeAllAlarms() async {
+    await prefs.clear();
   }
 
   static Future<int> getSavedAlarmsNumber() async {
