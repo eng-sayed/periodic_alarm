@@ -22,6 +22,7 @@ class AlarmNotification {
       StreamController<String?>.broadcast();
 
   /// Adds configuration for local notifications and initialize service.
+  @pragma('vm:entry-point')
   Future<void> init() async {
     const initializationSettingsAndroid =
         AndroidInitializationSettings('@mipmap/ic_launcher');
@@ -165,5 +166,10 @@ class AlarmNotification {
   Future<void> cancel(int id) async {
     await localNotif.cancel(id);
     debugPrint('[Alarm] Notification with id $id canceled');
+  }
+
+  Future<void> cancelAll() async {
+    await localNotif.cancelAll();
+    debugPrint('[Alarm] Notification with id  canceled');
   }
 }
