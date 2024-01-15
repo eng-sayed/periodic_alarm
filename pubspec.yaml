@@ -17,7 +17,7 @@ dependencies:
   shared_preferences: ^2.0.18
   android_alarm_manager_plus: ^2.1.1
   just_audio: ^0.9.32
-  intl: ^0.17.0
+  intl: ^0.18.0
   timezone: ^0.9.1
   audio_session: ^0.1.16
   control_volume: ^0.0.2
