@@ -64,7 +64,11 @@ class AlarmNotification {
       result = await localNotif
           .resolvePlatformSpecificImplementation<
               AndroidFlutterLocalNotificationsPlugin>()
-          ?.requestPermission();
+          ?.requestNotificationsPermission();
+      await localNotif
+          .resolvePlatformSpecificImplementation<
+              AndroidFlutterLocalNotificationsPlugin>()
+          ?.requestExactAlarmsPermission();
     } else {
       result = await localNotif
           .resolvePlatformSpecificImplementation<
